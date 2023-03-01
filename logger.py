@@ -1,12 +1,14 @@
 #Importing Libraries
 import logging
 import socket
+import json
 
 #Fetching Hostname
 logger = logging.getLogger(socket.gethostname())
 
 class logger_config:
     def debug(debug):
+        debug = json.loads(debug)
         logger = logging.getLogger(socket.gethostname())
         formatter = logging.Formatter('%(asctime)s : %(name)s : %(levelname)s : %(message)s')
         handler = logging.StreamHandler()
@@ -17,7 +19,8 @@ class logger_config:
             logger.setLevel(logging.DEBUG)
         if not debug:
             logger.setLevel(logging.INFO)
-        logger.propagate = False      
+        logger.propagate = False
+                          
     
 
 class log:
